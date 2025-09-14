@@ -1,0 +1,106 @@
+:root {
+  --bg: #0f1115;
+  --fg: #e7eaf0;
+  --muted: #9aa4b2;
+  --accent: #6aa0ff;
+  --card: #1a1f2b;
+  --border: #2a3142;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+#status {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.loader {
+  padding: 24px;
+  color: var(--muted);
+}
+
+.list-view {
+  padding: 12px;
+}
+.list-view h2 {
+  margin: 8px 0 12px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.card {
+  width: 100%;
+  text-align: left;
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card:hover {
+  border-color: var(--accent);
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+.sheet-view {
+  padding: 12px;
+}
+.sheet-title {
+  margin-top: 6px;
+}
+.sheet-body {
+  margin-top: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.back-btn {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.back-btn:hover {
+  border-color: var(--accent);
+}
+
+.sheet-body .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.sheet-body label {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}

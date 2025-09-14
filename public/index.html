@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Feuilles</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <span>Cyberpunk red for talespire v0.1</span>
+      <div id="status"></div>
+    </header>
+
+    <main id="app">
+      <div id="loader" class="loader">Chargement…</div>
+    </main>
+
+    <!-- Templates -->
+    <template id="tpl-list">
+      <section class="list-view">
+        <h2>Vos créatures</h2>
+        <div class="cards" id="creature-cards"></div>
+      </section>
+    </template>
+
+    <template id="tpl-card">
+      <button class="card" data-id="">
+        <span class="card-title"></span>
+      </button>
+    </template>
+
+    <template id="tpl-sheet">
+      <section class="sheet-view">
+        <button class="back-btn" id="back-btn">← Retour</button>
+        <h2 class="sheet-title"></h2>
+        <div class="sheet-body">
+          <p>Placeholder de fiche personnage.</p>
+          <ul class="sheet-placeholder">
+            <li>Nom: <span data-field="name"></span></li>
+            <li>ID: <span data-field="id"></span></li>
+            <li>Notes: Bientôt les stats, PV, inventaire…</li>
+          </ul>
+        </div>
+      </section>
+    </template>
+
+    <template id="tpl-cpr-form">
+      <div class="sheet-view">
+        <button class="back-btn" id="back-btn" style="display: none">
+          ← Retour
+        </button>
+
+        <h2 class="sheet-title">Fiche Cyberpunk Red</h2>
+
+        <form id="cpr-form" class="sheet-body">
+          <!-- SECTION 1 : CARACTÉRISTIQUES -->
+          <h3 style="margin: 0 0 8px 0">Caractéristiques</h3>
+          <div class="grid">
+            <label
+              >Réflexes
+              <input name="REF" type="number" min="1" max="10" required
+            /></label>
+            <label
+              >Agilité
+              <input name="DEX" type="number" min="1" max="10" required
+            /></label>
+            <label
+              >Intelligence
+              <input name="INT" type="number" min="1" max="10" required
+            /></label>
+            <label
+              >Technologie
+              <input name="TECH" type="number" min="1" max="10" required
+            /></label>
+            <label
+              >Prestance
+              <input name="COOL" type="number" min="1" max="10" required
+            /></label>
+            <label
+              >Volonté
+              <input name="WILL" type="number" min="1" max="10" required
+            /></label>
+            <label
+              >Chance
+              <input name="LUCK" type="number" min="1" max="10" required
+            /></label>
+            <label
+              >Mouvement
+              <input name="MOVE" type="number" min="1" max="10" required
+            /></label>
+            <label
+              >Corps <input name="BODY" type="number" min="1" max="10" required
+            /></label>
+            <label
+              >Empathie
+              <input name="EMP" type="number" min="1" max="10" required
+            /></label>
+          </div>
+
+          <!-- SECTION 2 : COMPÉTENCES -->
+          <h3 style="margin: 16px 0 8px 0">Compétences</h3>
+
+          <!-- Combat -->
+          <fieldset class="skill-group">
+            <legend>Combat</legend>
+            <div class="grid">
+              <label
+                >Pistolet <input name="HANDGUN" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Fusil <input name="RIFLE" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Automatique
+                <input name="AUTOFIRE" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Fusil à pompe
+                <input name="SHOTGUN" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Armes lourdes
+                <input name="HEAVY_WEAPONS" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Exotiques
+                <input name="EXOTIC_WEAPONS" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Sniper <input name="SNIPER" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Armes de mêlée
+                <input name="MELEE_WEAPONS" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Bagarre <input name="BRAWLING" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Esquive <input name="EVASION" type="number" min="0" max="10"
+              /></label>
+            </div>
+          </fieldset>
+
+          <!-- Mouvement & Pilotage -->
+          <fieldset class="skill-group">
+            <legend>Mouvement & Pilotage</legend>
+            <div class="grid">
+              <label
+                >Athlétisme
+                <input name="ATHLETICS" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Endurance
+                <input name="ENDURANCE" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Escalade <input name="CLIMB" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Natation <input name="SWIMMING" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Conduite <input name="DRIVING" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Moto <input name="MOTORCYCLE" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Pilote (air)
+                <input name="PILOT_AIR" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Pilote (sol)
+                <input name="PILOT_GROUND" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Pilote (mer)
+                <input name="PILOT_SEA" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Équitation <input name="RIDING" type="number" min="0" max="10"
+              /></label>
+            </div>
+          </fieldset>
+
+          <!-- Perception & Discrétion -->
+          <fieldset class="skill-group">
+            <legend>Perception & Discrétion</legend>
+            <div class="grid">
+              <label
+                >Perception
+                <input name="PERCEPTION" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Vigilance
+                <input name="CONCENTRATION" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Furtivité <input name="STEALTH" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Pickpocket
+                <input name="PICKPOCKET" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Effraction
+                <input name="LOCKPICKING" type="number" min="0" max="10"
+              /></label>
+            </div>
+          </fieldset>
+
+          <!-- Savoirs & Société -->
+          <fieldset class="skill-group">
+            <legend>Savoirs & Société</legend>
+            <div class="grid">
+              <label
+                >Éducation
+                <input name="EDUCATION" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Culture de rue
+                <input name="STREETWISE" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Criminologie
+                <input name="CRIMINOLOGY" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Locale (expert)
+                <input name="LOCAL_EXPERT" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Commerce <input name="TRADING" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Négociation
+                <input name="PERSUASION" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Interrogatoire
+                <input name="INTERROGATION" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Intimidation
+                <input name="INTIMIDATION" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Langue (native)
+                <input name="LANGUAGE_NATIVE" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Langue (autre)
+                <input name="LANGUAGE_OTHER" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Jeu <input name="GAMBLING" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Performance
+                <input name="PERFORMANCE" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Crédibilité
+                <input name="CREDIBILITY" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Soins personnels
+                <input name="PERSONAL_GROOMING" type="number" min="0" max="10"
+              /></label>
+            </div>
+          </fieldset>
+
+          <!-- Tech & Net -->
+          <fieldset class="skill-group">
+            <legend>Technologie & Netrun</legend>
+            <div class="grid">
+              <label
+                >Tech. de base
+                <input name="BASIC_TECH" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Armes (tech)
+                <input name="WEAPON_TECH" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Cybertech
+                <input name="CYBERTECH" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Électronique/Sécu
+                <input
+                  name="ELECTRONICS_SECURITY"
+                  type="number"
+                  min="0"
+                  max="10"
+              /></label>
+              <label
+                >Fabrication <input name="MAKER" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Programmation
+                <input name="PROGRAMMING" type="number" min="0" max="10"
+              /></label>
+              <label
+                >Interface (Netrun)
+                <input name="INTERFACE" type="number" min="0" max="10"
+              /></label>
+            </div>
+          </fieldset>
+
+          <!-- Actions -->
+          <div
+            style="
+              margin-top: 12px;
+              display: flex;
+              gap: 8px;
+              justify-content: flex-end;
+            "
+          >
+            <button type="submit" class="back-btn">Enregistrer</button>
+          </div>  
+        </form>
+      </div>
+    </template>
+
+    <button class="back-btn" id="back-btn" style="display: none">
+      ← Retour
+    </button>
+
+    <script src="./main.js" type="module"></script>
+  </body>
+</html>

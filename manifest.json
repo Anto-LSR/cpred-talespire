@@ -1,0 +1,29 @@
+{
+  "manifestVersion": 1,
+  "name": "Feuilles - Auto Open",
+  "summary": "Récupère les créatures du joueur et ouvre la fiche s’il n’y en a qu’une.",
+  "entryPoint": "/public/index.html",
+  "api": {
+    "version": "0.1",
+    "initTimeout": 10,
+    "subscriptions": {
+      "symbiote": {
+        "onStateChangeEvent": "handleSymbioteStateChange"
+      },
+      "creatures" : {
+        "onCreatureSelectionChange" : "handleCreatureSelectionChange"
+      }
+    },
+    "interop": {
+      "id": "2f7dd6b6-8a8a-4b2f-9f45-56f2cbb5f0b1"
+    }
+  },
+  "environment": {
+    "capabilities": ["runInBackground"],
+    "extras": ["colorStyles"]
+  },
+  "controls": {
+    "reload": true,
+    "navigation": false
+  }
+}
