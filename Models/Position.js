@@ -1,4 +1,4 @@
-class Position {
+export class Position {
     constructor() {
         "use strict"
         this.locId = 0;

@@ -1,4 +1,4 @@
-class CreatureStat
+export class CreatureStat
 {
     constructor() {
         "use strict"

@@ -1,4 +1,4 @@
-class CreatureInfo {
+export class CreatureInfo {
     constructor() {
         "use strict"
         this.id = "";

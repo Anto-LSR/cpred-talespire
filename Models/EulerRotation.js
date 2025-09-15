@@ -1,4 +1,4 @@
-class EulerRotation {
+export class EulerRotation {
     constructor() {
         "use strict"
         this.x = 0.0;
