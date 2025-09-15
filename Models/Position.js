@@ -1,6 +1,6 @@
 class Position {
     constructor() {
-        "use scrict"
+        "use strict"
         this.locId = 0;
         this.x = 0.0;
         this.y = 0.0;

@@ -1,6 +1,6 @@
 class CreatureInfo {
     constructor() {
-        "use scrict"
+        "use strict"
         this.id = "";
         this.isUnique = false;
         this.name = "";

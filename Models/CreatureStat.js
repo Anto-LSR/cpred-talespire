@@ -1,7 +1,7 @@
 class CreatureStat
 {
     constructor() {
-        "use scrict"
+        "use strict"
         this.name = "";
         this.value = 0.0;
         this.max = 0.0;
