@@ -11,3 +11,12 @@ ui.createTabsHeader(mount, {
     active: 'personnage' // ou 'inventaire' | 'equipement' | 'mj'
 });
 
+
+// Hooks globaux liés au manifest
+window.handleSymbioteStateChange = async function (evt) {
+    if (evt && evt.kind === "hasInitialized") {
+        const players = await TS.players.getPlayersInThisCampaign();
+        const infos = await TS.players.getMoreInfo([players[0]?.id])
+        console.log(infos)
+    }
+};

@@ -10,6 +10,11 @@
     --cyan: #02d7f2;
     --yellow: #f2e900;
     --glow: rgba(251, 10, 38, 0.35);
+    --btn-font: "Segoe UI", Roboto, Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --btn-bg: #15161a;     /* fond sombre */
+    --btn-text: #ffffff;   /* texte */
+    --btn-line: #1e1f24;   /* bord fin */
+    --btn-red: #fb0a26;    /* accent rouge */
 }
 
 html, body {
@@ -18,6 +23,10 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: "Segoe UI", Roboto, Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+.container{
+    padding: 10px;
 }
 
 /* Header Tabs */
@@ -181,4 +190,96 @@ body::before {
     mix-blend-mode: screen;
     pointer-events: none;
     opacity: 0.25;
+}
+
+
+.returnBtn {
+    position: relative;
+    display: inline-block;
+    padding: 8px 16px 8px 36px; /* espace pour la barre/flèche à gauche */
+    color: #fff;
+    background: #15161a; /* sombre compact */
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 800;
+    font-family: "Segoe UI", Roboto, Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Barre rouge verticale (signature cyberpunk) */
+.returnBtn::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    width: 12px;
+    height: 2px;
+    background: var(--red);
+    transform: translateY(-50%);
+}
+
+/* Chevron simple, sans effet */
+.returnBtn::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-left: 2px solid var(--red);
+    border-bottom: 2px solid var(--red);
+    transform: translate(-2px, -50%) rotate(45deg);
+}
+
+.genericBtn {
+    display: inline-block;
+    padding: 8px 14px;
+    color: var(--btn-text);
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-line);
+    border-radius: 4px;
+    text-decoration: none;
+    font: 700 14px/1 var(--btn-font);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    /* normalisation pour <button> */
+    appearance: none;
+}
+
+/* Variante primaire rouge (accent CP Red) */
+.genericBtn--primary {
+    border-color: var(--btn-red);
+}
+
+/* Variante outline */
+.genericBtn--outline {
+    background: transparent;
+    border-color: var(--btn-red);
+    color: var(--btn-text);
+}
+
+/* Variante compacte */
+.genericBtn--sm {
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+.genericBtn--lg {
+    padding: 12px 18px;
+    font-size: 16px;
+}
+
+/* Icône à gauche (optionnel) */
+.genericBtn .icon {
+    display: inline-block;
+    vertical-align: -1px;
+    width: 10px;
+    height: 10px;
+    margin-right: 8px;
+    border-left: 2px solid var(--btn-red);
+    border-bottom: 2px solid var(--btn-red);
+    transform: rotate(45deg);
 }
