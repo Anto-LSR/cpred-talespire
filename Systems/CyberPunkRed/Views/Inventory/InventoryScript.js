@@ -4,10 +4,10 @@ const ui = new UiService();
 // Monter le header de l'app
 let mount = document.getElementById("CPR-main-header")
 ui.createTabsHeader(mount, {
-    characterViewPath: './CharacterView.html',
-    inventoryViewPath: './../Inventory/InventoryView.html',
+    characterViewPath: './../Character/CharacterView.html',
+    inventoryViewPath: './InventoryView.html',
     equipmentViewPath: './../Equipment/EquipmentView.html',
     GMViewPath: './../GM/GMView.html',
-    active: 'personnage' // ou 'inventaire' | 'equipement' | 'mj'
+    active: 'inventaire'
 });
 

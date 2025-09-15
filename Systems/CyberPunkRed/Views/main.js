@@ -1,4 +1,12 @@
-﻿import {createSimpleTabsHeader} from "./Menu/menu.js";
+﻿import {UiService} from "../Services/UiService.js"
 
-let mount = document.getElementById("test")
-createSimpleTabsHeader(mount)
+const ui = new UiService();
+// Monter le header de l'app
+let mount = document.getElementById("CPR-main-header")
+ui.createTabsHeader(mount, {
+    characterViewPath: './Character/CharacterView.html',
+    inventoryViewPath: './Inventory/InventoryView.html',
+    equipmentViewPath: './EquipmentView.html',
+    GMViewPath: './GM/GMView.html',
+    active: 'zig'
+});

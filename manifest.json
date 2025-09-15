@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "name": "Feuilles - Auto Open",
   "summary": "Récupère les créatures du joueur et ouvre la fiche s’il n’y en a qu’une.",
-  "entryPoint": "/Systems/CyberpunkRed/Views/index.html",
+  "entryPoint": "/Systems/CyberpunkRed/Views/Character/CharacterView.html",
 
   "api": {
     "version": "0.1",
