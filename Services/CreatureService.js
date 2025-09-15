@@ -1,5 +1,5 @@
-import {CreatureFragment} from "./Models.Index.js";
-class CreatureService {
+import {CreatureFragment} from "../Models/Index.js";
+export class CreatureService {
     constructor() {
     }
     getUniqueCreaturesInThisCampaign(){

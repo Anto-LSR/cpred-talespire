@@ -1,6 +1,7 @@
 import {UiService} from "../../Services/UiService.js"
 
 const ui = new UiService();
+
 // Monter le header de l'app
 let mount = document.getElementById("CPR-main-header")
 ui.createTabsHeader(mount, {
@@ -10,4 +11,6 @@ ui.createTabsHeader(mount, {
     GMViewPath: './../GM/GMView.html',
     active: 'equipement' // ou 'inventaire' | 'equipement' | 'mj'
 });
+
+
 
