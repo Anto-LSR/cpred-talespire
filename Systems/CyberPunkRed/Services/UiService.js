@@ -7,7 +7,6 @@ export class UiService {
     createTabsHeader(mount, opts = {}) {
         window.handleSymbioteStateChange = function (evt) {
             if (evt && evt.kind === "hasInitialized") {
-                let tabs;
                 const playerService = new PlayerService();
                 const {
                     characterViewPath = './Character/CharacterView.html',
@@ -17,21 +16,13 @@ export class UiService {
                     active           = null // ex: 'personnage' | 'inventaire' | 'equipement' | 'mj'
                 } = opts;
 
-
-                if(playerService.isGM()){
-                    tabs = [
-                        { id: 'personnage', label: 'Personnage', href: characterViewPath },
-                        { id: 'inventaire', label: 'Inventaire', href: inventoryViewPath },
-                        { id: 'equipement', label: 'Equipement', href: equipmentViewPath },
-                        { id: 'mj',         label: 'MJ',         href: GMViewPath }
-                    ];
-                }
-                else {
-                    tabs = [
-                        { id: 'personnage', label: 'Personnage', href: characterViewPath },
-                        { id: 'inventaire', label: 'Inventaire', href: inventoryViewPath },
-                        { id: 'equipement', label: 'Equipement', href: equipmentViewPath }
-                    ];
+                const tabs = [
+                    { id: 'personnage', label: 'Personnage', href: characterViewPath },
+                    { id: 'inventaire', label: 'Inventaire', href: inventoryViewPath },
+                    { id: 'equipement', label: 'Equipement', href: equipmentViewPath }
+                ];
+                if(avplayerService.isGM()){
+                    tabs.push({ id: 'mj', label: 'MJ', href: GMViewPath })
                 }
 
                 const root = document.createElement('header');
