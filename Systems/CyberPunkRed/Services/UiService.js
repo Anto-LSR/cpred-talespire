@@ -4,9 +4,7 @@ export class UiService {
     constructor() {}
 
     // createTabsHeader(mount, { characterViewPath, inventoryViewPath, equipmentViewPath, GMViewPath, active } = {})
-    createTabsHeader(mount, opts = {}) {
-        window.handleSymbioteStateChange = function (evt) {
-            if (evt && evt.kind === "hasInitialized") {
+    createTabsHeader(mount,isGM = false, opts = {}) {
                 const playerService = new PlayerService();
                 const {
                     characterViewPath = './Character/CharacterView.html',
@@ -21,7 +19,7 @@ export class UiService {
                     { id: 'inventaire', label: 'Inventaire', href: inventoryViewPath },
                     { id: 'equipement', label: 'Equipement', href: equipmentViewPath }
                 ];
-                if(avplayerService.isGM()){
+                if(isGM){
                     tabs.push({ id: 'mj', label: 'MJ', href: GMViewPath })
                 }
 
@@ -59,6 +57,4 @@ export class UiService {
                 mount.appendChild(root);
                 return { root, refs };
             }
-        }
-    };
 }

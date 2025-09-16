@@ -5,7 +5,11 @@ export class PlayerService{
         this.player = new PlayerInfo();
     }
     async isGM(){
-        this.player =  await this.player.getPlayer();
+        this.player =  await this.getCurrentPlayer();
         return this.player.rights.canGm;
+    }
+
+    async getCurrentPlayer(){
+        return await this.player.getPlayer();
     }
 }
